@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/third_edit_cotacao"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/drawable_botoes"
+        android:elevation="2.5dp"
+        android:ems="10"
+        android:enabled="false"
+        android:gravity="center"
+        android:hint="@string/third_hint_cotacao"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@+id/third_edit_valor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/third_edit_valor"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/drawable_botoes"
+        android:elevation="2.5dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/third_hint_valor"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/third_edit_cotacao"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/third_btn_calcular"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/blueGray700"
+        android:text="@string/third_btn"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reciclerViewConverterFragment" />
+
+    <TextView
+        android:id="@+id/third_view_cotacao"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="@string/third_view_cotacao"
+        app:layout_constraintEnd_toEndOf="@+id/third_edit_cotacao"
+        app:layout_constraintStart_toStartOf="@+id/third_edit_cotacao"
+        app:layout_constraintTop_toBottomOf="@+id/third_edit_cotacao" />
+
+    <TextView
+        android:id="@+id/third_view_valor"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center"
+        android:text="@string/third_view_valor"
+        app:layout_constraintEnd_toEndOf="@+id/third_edit_valor"
+        app:layout_constraintStart_toStartOf="@+id/third_edit_valor"
+        app:layout_constraintTop_toBottomOf="@+id/third_edit_valor" />
+
+    <SearchView
+        android:id="@+id/searchViewConversor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/custom_search"
+        android:elevation="3dp"
+        android:queryHint="Pesquisar Moedas"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/third_view_cotacao" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reciclerViewConverterFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:fastScrollEnabled="true"
+        app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
+        app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
+        app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
+        app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
+        app:layout_constraintBottom_toTopOf="@+id/third_btn_calcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_coin_text_converter_fragment" />
+
+    <TextView
+        android:id="@+id/select_coin_text_converter_fragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray20"
+        android:text="--"
+        android:textAlignment="center"
+        android:textColor="@color/gray500"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchViewConversor" />
+
+
+</android.support.constraint.ConstraintLayout>
