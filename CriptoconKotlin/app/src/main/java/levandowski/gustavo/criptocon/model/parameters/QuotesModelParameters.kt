@@ -12,11 +12,7 @@ class QuotesModelParameters() {
     @SerializedName("BRL")
     lateinit var brl: PriceBRL
 
-    @SerializedName("USD")
-    lateinit var usd: PriceUSD
-
-    constructor(brl: PriceBRL, usd: PriceUSD):this(){
+    constructor(brl: PriceBRL):this(){
         this.brl = brl
-        this.usd = usd
     }
 }

@@ -14,9 +14,6 @@ class PriceBRL() {
   @SerializedName("volume_24h")
    var volumTwentyHours:String = ""
 
-  @SerializedName("market_cap")
-   var marketCap:String = ""
-
   @SerializedName("percent_change_1h")
    var percentChangeOneHour:String = ""
 
@@ -26,17 +23,22 @@ class PriceBRL() {
   @SerializedName("percent_change_7d")
    var percentChangeWeek:String = ""
 
-  constructor(price:String,volumTwentyHours:String,marketCap:String,percentChangeOneHour:String,percentChangeTwentyHour:String,percentChangeWeek:String):this(){
+  @SerializedName("market_cap")
+  var marketCap:String = ""
+
+  @SerializedName("last_updated")
+  var lastUpdated:String = ""
+
+  constructor(price:String,volumTwentyHours:String,percentChangeOneHour:String,percentChangeTwentyHour:String,percentChangeWeek:String,marketCap:String,lastUpdated:String):this(){
       this.price = price
       this.volumTwentyHours = volumTwentyHours
-      this.marketCap = marketCap
       this.percentChangeOneHour = percentChangeOneHour
       this.percentChangeTwentyHour = percentChangeTwentyHour
       this.percentChangeWeek = percentChangeWeek
+      this.marketCap = marketCap
+      this.lastUpdated = lastUpdated
   }
 
-    fun getFormatPrice():String{
-        val currencyFormat = NumberFormat.getCurrencyInstance()
-        return currencyFormat.format(price.toDouble())
-    }
+    fun getFormatPrice():String = NumberFormat.getCurrencyInstance().format(price.toDouble())
+
 }

@@ -88,7 +88,7 @@ class ConvertCoinsFragment : Fragment(),ItemPositionListener , SearchView.OnQuer
 
     fun actionEvents() = buttonCalculate.setOnClickListener {
         if (isEmptyData()) {
-            "Digite todos os dados corretamente".toast(activity).show()
+            "Ops... selecione uma moeda e informe o valor a ser investido".toast(activity).show()
         }else {
             calculateCoin.priceInput = replaceStrings(etPriceInput.text.toString()).toDouble()
 
@@ -138,9 +138,9 @@ class ConvertCoinsFragment : Fragment(),ItemPositionListener , SearchView.OnQuer
 
     fun replaceStrings(format:String):String {
         if (format.contains(".") && format.contains(",")) {
-            return  Regex("[^0-9.]").replace("$format", "").replace(",", "")
+            return Regex("[^0-9,]").replace(format.replace(",", ""),"").trim()
         } else {
-            return  Regex("[^0-9,]").replace("$format", "").replace(",", ".")
+            return Regex("[^0-9,]").replace(format.replace(",", "."),"").trim()
         }
     }
 

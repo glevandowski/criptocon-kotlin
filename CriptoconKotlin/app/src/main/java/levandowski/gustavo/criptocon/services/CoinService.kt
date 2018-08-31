@@ -2,19 +2,18 @@ package levandowski.gustavo.criptocon.services
 
 import levandowski.gustavo.criptocon.model.parameters.CoinModelParameters
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * Created by glevandowski on 01/07/18.
  */
  interface CoinService {
 
-    @GET("?convert=BRL")
-    fun getCoin(@Query("start") start:Int, @Query("limit") limit:Int, @Query("structure") structure: String): Call<CoinModelParameters>
+    @GET("listings/latest?convert=BRL")
+    fun getCoin(@Query("CMC_PRO_API_KEY") header:String, @Query("limit") limit:Int): Call<CoinModelParameters>
 
     companion object {
-        var BASE_URL: String = "https://api.coinmarketcap.com/v2/ticker/";
+        var BASE_URL: String = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/";
     }
 
 }

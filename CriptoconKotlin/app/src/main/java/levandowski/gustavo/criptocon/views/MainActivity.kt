@@ -49,7 +49,7 @@ open class MainActivity():AppCompatActivity(), NavigationView.OnNavigationItemSe
         setSupportActionBar(toolbar)
         this.setupNavigation()
 
-        this.getCoin(0,100)
+        this.getCoin(true)
         }
 
 
@@ -98,61 +98,25 @@ open class MainActivity():AppCompatActivity(), NavigationView.OnNavigationItemSe
     fun share() = startActivity(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT,
             "*Curta a Página e acompanhe nosso Trabalho* CriptoCon - https://www.facebook.com/CriptoCon39/"))
 
-    fun getCoinRefresh(start: Int, limit: Int){
-        createData()
-        val call = service.getCoin(start,limit,"array")
-        call.enqueue(object: Callback<CoinModelParameters>{
+    fun getCoin(isFirstAcess:Boolean){
 
-
-            override fun onResponse(call:Call<CoinModelParameters>, response: Response<CoinModelParameters>) {
-                if(response.code() == 429) {
-                    "Servidor indisponível, tente novamente mais tarde".toast(applicationContext).show()
-                } else if(!response.isSuccessful){
-
-                    return
-                }
-
-                for (i in 0..(response.body()?.data?.size ?: 0)-1) {
-                    coinArrayList.add(response.body()?.data?.get(i) ?: Coin())
-
-                    if(coinArrayList.size > 500){
-                        showFirstFragment()
-                        swipeRefreshLayout.isRefreshing = false
-                    }
-
-                }
-
-                getCoinRefresh(coinArrayList.size,coinArrayList.size+100)
-
-            }
-            override fun onFailure(call:Call<CoinModelParameters>, t: Throwable) {
-                call.cancel()
-                "Verifique sua conexão à internet".toast(applicationContext).show()
-            }
-        })
-    }
-
-    fun getCoin(start:Int,limit: Int){
+        if(isFirstAcess)
         this.showSplashScreen()
+
         createData()
 
-        val call =  start.start(limit)
-
-        call.enqueue(object: Callback<CoinModelParameters>{
+        service.getCoin("e9a8c51c-6358-4138-9c38-c7e6f90277dc",5000).enqueue(object: Callback<CoinModelParameters>{
 
             override fun onResponse(call:Call<CoinModelParameters>, response: Response<CoinModelParameters>) {
-               if (response.code() == 429) {
-                    "Servidor indisponível, tente novamente mais tarde".toast(applicationContext).show()
-                } else if(!response.isSuccessful){
-                   showFirstFragment()
+               if(!response.isSuccessful){
+                   "Verifique sua conexão à internet".toast(applicationContext)
                    return
                }
 
               for (i in response.body()?.data?.indices?.iterator()!!) {
                     coinArrayList.add(response.body()?.data?.get(i) ?: Coin())
                 }
-                    getCoin(coinArrayList.size,coinArrayList.size+100)
-
+                showFirstFragment()
             }
             override fun onFailure(call:Call<CoinModelParameters>, t: Throwable) {
                 call.cancel()
@@ -160,10 +124,6 @@ open class MainActivity():AppCompatActivity(), NavigationView.OnNavigationItemSe
             }
         })
     }
-
-    fun Int.start(limit:Int):Call<CoinModelParameters> = service.getCoin(this,limit,"array")
-
-
 
     fun createData(){
         val g: Gson =  GsonBuilder().create();
@@ -176,7 +136,7 @@ open class MainActivity():AppCompatActivity(), NavigationView.OnNavigationItemSe
 
        swipeRefreshLayout.setOnRefreshListener {
            coinArrayList.clear()
-           getCoinRefresh(0,100)
+           getCoin(false)
        }
     }
 

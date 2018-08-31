@@ -10,6 +10,7 @@ import java.text.NumberFormat
  * Created by glevandowski on 30/06/18.
  */
 open class Coin():Parcelable {
+
     @SerializedName("id")
     var idCoin: String = ""
 
@@ -19,11 +20,8 @@ open class Coin():Parcelable {
     @SerializedName("symbol")
     var symbol: String = ""
 
-    @SerializedName("website_slug")
+    @SerializedName("slug")
     var websiteSlug: String = ""
-
-    @SerializedName("rank")
-    var rank: String = ""
 
     @SerializedName("circulating_supply")
     var circulatingSupply: String = ""
@@ -34,23 +32,35 @@ open class Coin():Parcelable {
     @SerializedName("max_supply")
     var maxSupply: String = ""
 
-    @SerializedName("quotes")
-    var quotes: QuotesModelParameters = QuotesModelParameters()
+    @SerializedName("date_added")
+    var dateAdded:String = ""
+
+    @SerializedName("num_market_pairs")
+    var numMarketPairs:String = ""
+
+    @SerializedName("cmc_rank")
+    var rank: String = ""
 
     @SerializedName("last_updated")
     var lastUpdated: String = ""
 
-    constructor(id: String, name: String, symbol: String, websiteSlug: String, rank: String, circulatingSupply: String, totalSupply: String, maxSupply: String, quotesModelParameters: QuotesModelParameters, lastUpdated: String) : this() {
+    @SerializedName("quote")
+    var quotes: QuotesModelParameters = QuotesModelParameters()
+
+    constructor(id: String, name: String, symbol: String, slug: String, circulatingSupply: String, totalSupply: String, maxSupply: String,
+                dateAdded:String, numMarketPairs:String, rank:String, lastUpdated: String, quotesModelParameters: QuotesModelParameters) : this() {
         this.idCoin = id
         this.name = name
         this.symbol = symbol
-        this.websiteSlug = websiteSlug
-        this.rank = rank
+        this.websiteSlug = slug
         this.circulatingSupply = circulatingSupply
         this.totalSupply = totalSupply
         this.maxSupply = maxSupply
-        this.quotes = quotesModelParameters
+        this.dateAdded = dateAdded
+        this.numMarketPairs = numMarketPairs
+        this.rank = rank
         this.lastUpdated = lastUpdated
+        this.quotes = quotesModelParameters
 
     }
 
@@ -60,10 +70,12 @@ open class Coin():Parcelable {
         name = parcel.readString()
         symbol = parcel.readString()
         websiteSlug = parcel.readString()
-        rank = parcel.readString()
         circulatingSupply = parcel.readString()
         totalSupply = parcel.readString()
         maxSupply = parcel.readString()
+        dateAdded = parcel.readString()
+        numMarketPairs = parcel.readString()
+        rank = parcel.readString()
         lastUpdated = parcel.readString()
     }
 
@@ -72,10 +84,12 @@ open class Coin():Parcelable {
         parcel.writeString(name)
         parcel.writeString(symbol)
         parcel.writeString(websiteSlug)
-        parcel.writeString(rank)
         parcel.writeString(circulatingSupply)
         parcel.writeString(totalSupply)
         parcel.writeString(maxSupply)
+        parcel.writeString(dateAdded)
+        parcel.writeString(numMarketPairs)
+        parcel.writeString(rank)
         parcel.writeString(lastUpdated)
     }
 

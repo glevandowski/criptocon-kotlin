@@ -4,8 +4,8 @@ package levandowski.gustavo.criptocon.model
  * Created by glevandowski on 02/07/18.
  */
 class CalculateCoin(quote:Double = 0.0,priceInput:Double = 0.0) {
-    var quote = 0.0
-    var priceInput = 0.0
+    var quote = 0.00
+    var priceInput = 0.00
 
     init {
      this.quote = quote
@@ -13,6 +13,4 @@ class CalculateCoin(quote:Double = 0.0,priceInput:Double = 0.0) {
     }
 
     fun formula() = priceInput / quote
-
-
 }
