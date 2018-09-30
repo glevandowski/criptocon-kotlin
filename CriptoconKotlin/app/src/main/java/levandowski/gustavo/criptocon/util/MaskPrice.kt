@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import java.text.NumberFormat
+import java.util.*
 
 /**
  * Created by glevandowski on 04/07/18.
@@ -11,7 +12,7 @@ import java.text.NumberFormat
  class MaskPrice(campo:EditText): TextWatcher {
 
     var isUpdating: Boolean = false
-    var nf = NumberFormat.getCurrencyInstance()
+    var nf = NumberFormat.getCurrencyInstance( Locale("pt","BR"))
     var campo: EditText
 
     init { this.campo = campo }
@@ -26,14 +27,17 @@ import java.text.NumberFormat
 
         var str:String = s.toString ();
 
-        var hasMask:Boolean = ((str.indexOf("R$") > -1 || str.indexOf("$") > -1) && (str.indexOf(".") > -1 || str.indexOf(",") > -1));
+        val hasMask:Boolean = ((str.indexOf("R$") > -1 || str.indexOf("$") > -1) && (str.indexOf(".") > -1 || str.indexOf(",") > -1));
 
         if (hasMask) {
-            str = str.replace("R$", "").replace(",", "").replace(".", "");
+            str = str.replace("R","")
+                    .replace("$", "")
+                    .replace(",", "")
+                    .replace(".", "");
         }
 
             str = nf.format((str.toDouble() / 100))
-            campo.setText(str);
+            campo.setText(str)
             campo.setSelection(campo.getText().length);
 
         }
