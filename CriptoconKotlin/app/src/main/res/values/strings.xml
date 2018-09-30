@@ -1,6 +1,7 @@
 <resources>
     <!--aqui a ref do nome do app-->
     <string name="app_name">CriptoCon</string>
+    <string name="key_api">e9a8c51c-6358-4138-9c38-c7e6f90277dc</string>
     <!--aqui termina a ref-->
 
     <!--aqui as refs do menu-->

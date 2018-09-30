@@ -3,14 +3,19 @@ package levandowski.gustavo.criptocon.model
 /**
  * Created by glevandowski on 02/07/18.
  */
-class CalculateCoin(quote:Double = 0.0,priceInput:Double = 0.0) {
-    var quote = 0.00
-    var priceInput = 0.00
+class CalculateCoin{
 
-    init {
-     this.quote = quote
-     this.priceInput = priceInput
+    fun formula(quote: Double, priceInput: Double):Double = ((priceInput*1) / quote)
+
+    fun formattt(format:String):Double {
+        if (format.contains(".") && format.contains(",")) {
+            val auxFormat:String = Regex("^[R$]$").replace(format.replace("R","").
+                    replace("$","").replace(".", ""),"").trim()
+           return Regex("^[R$]$").replace(auxFormat.replace("R","").
+                   replace("$","").replace(",", "."),"").trim().toDouble()
+        } else {
+            return Regex("^[R$]$").replace(format.replace("R","").
+                    replace("$","").replace(",", "."),"").trim().toDouble()
+        }
     }
-
-    fun formula() = priceInput / quote
-}
+}//TODO problema com numeros digitados do exemplo R$ 1.000,00

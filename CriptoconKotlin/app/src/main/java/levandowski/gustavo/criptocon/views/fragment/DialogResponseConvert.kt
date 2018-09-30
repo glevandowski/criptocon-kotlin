@@ -1,4 +1,4 @@
-package levandowski.gustavo.criptocon.views
+package levandowski.gustavo.criptocon.views.fragment
 
 import android.annotation.SuppressLint
 import android.app.Dialog

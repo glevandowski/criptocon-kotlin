@@ -80,7 +80,7 @@ class ConverterAdapter(context: Context, coinArrayList:ArrayList<Coin>,listener:
                         for (index in list) {
                             if (index.name.toLowerCase().contains(constraint.toString())
                                     || index.name.contains(constraint.toString()))
-                                results?.add(index)
+                                results.add(index)
 
                         }
                     }

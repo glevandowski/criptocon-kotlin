@@ -13,7 +13,6 @@ import levandowski.gustavo.criptocon.R
 import levandowski.gustavo.criptocon.adapters.holder.CoinHolder
 import levandowski.gustavo.criptocon.model.Coin
 import android.widget.Toast
-import levandowski.gustavo.criptocon.views.MainActivity
 import kotlin.collections.ArrayList
 
 

@@ -1,9 +1,6 @@
-package levandowski.gustavo.criptocon.views
+package levandowski.gustavo.criptocon.views.fragment
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.app.Fragment
 import android.support.v7.widget.CardView
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +9,9 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import kotlinx.android.synthetic.main.fragment_about.view.*
 import levandowski.gustavo.criptocon.R
+import levandowski.gustavo.criptocon.views.BaseFragment
 
-class AboutFragment : Fragment() {
+class AboutFragment : BaseFragment() {
      lateinit var buttonFacebook:Button
      lateinit var buttonGitHubOne:Button
      lateinit var buttonGitHubTwo:Button
@@ -48,9 +46,4 @@ class AboutFragment : Fragment() {
 
 
     fun CardView.setupAnimations() = this.startAnimation(AnimationUtils.loadAnimation(activity, R.anim.fadein))
-
-
-    fun Button.onClickExternalUrl(string:String) = this.setOnClickListener{ string.openExternalUrl()}
-
-    fun String.openExternalUrl() = startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(this)))
 }

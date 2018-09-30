@@ -1,4 +1,4 @@
-package levandowski.gustavo.criptocon.views
+package levandowski.gustavo.criptocon.views.fragment
 
 import android.os.Bundle
 import android.app.Fragment
@@ -8,15 +8,12 @@ import android.view.ViewGroup
 
 import levandowski.gustavo.criptocon.R
 import levandowski.gustavo.criptocon.listeners.IsOpenFragmentListener
+import levandowski.gustavo.criptocon.views.BaseFragment
+import levandowski.gustavo.criptocon.views.activity.MainActivity
 
 
-class SplashFragment : Fragment() ,IsOpenFragmentListener{
+class SplashFragment : BaseFragment() ,IsOpenFragmentListener{
     var isOpenManage:Boolean = true;
-    var  main:MainActivity? = null
-
-    init {
-        main = MainActivity(this)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view:View = inflater.inflate(R.layout.fragment_splash, container, false)
@@ -24,9 +21,7 @@ class SplashFragment : Fragment() ,IsOpenFragmentListener{
 
         (activity as MainActivity).supportActionBar?.hide()
 
-        if(isOpenManage == false) {
-         fragmentManager?.popBackStack()
-        }
+        if(isOpenManage == false) { fragmentManager?.popBackStack() }
 
         return view
     }
@@ -34,5 +29,4 @@ class SplashFragment : Fragment() ,IsOpenFragmentListener{
     override fun isOpenFragment(isOpen: Boolean) {
         isOpenManage = isOpen
     }
-
 }

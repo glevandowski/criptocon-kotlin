@@ -2,7 +2,6 @@ package levandowski.gustavo.criptocon.util
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.EditText
 import java.text.NumberFormat
 
