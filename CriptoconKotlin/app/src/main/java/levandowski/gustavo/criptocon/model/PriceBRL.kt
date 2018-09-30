@@ -2,6 +2,7 @@ package levandowski.gustavo.criptocon.model
 
 import com.google.gson.annotations.SerializedName
 import java.text.NumberFormat
+import java.util.*
 
 /**
  * Created by glevandowski on 08/07/18.
@@ -39,6 +40,6 @@ class PriceBRL() {
       this.lastUpdated = lastUpdated
   }
 
-    fun getFormatPrice():String = NumberFormat.getCurrencyInstance().format(price.toDouble())
+    fun getFormatPrice():String = NumberFormat.getCurrencyInstance(Locale("pt","BR")).format(price.toDouble())
 
 }
