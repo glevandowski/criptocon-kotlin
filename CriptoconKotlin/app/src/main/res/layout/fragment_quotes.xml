@@ -5,25 +5,6 @@
     android:layout_height="match_parent"
     tools:context="levandowski.gustavo.criptocon.ui.fragment.QuotesFragment">
 
-    <SearchView
-        android:id="@+id/searchViewCoins"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_search"
-        android:elevation="5dp"
-        android:queryHint="Pesquisar Moedas"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_quotes"
         android:layout_width="0dp"
@@ -50,4 +31,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchViewCoins" />
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <!-- include bottom sheet -->
+    <include
+        layout="@layout/bottom_sheet"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/swipe_refresh_quotes" />
 </android.support.constraint.ConstraintLayout>

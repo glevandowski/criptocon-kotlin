@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager.RESULT_UNCHANGED_SHOWN
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 
 
@@ -18,13 +19,13 @@ class ManageKeyboard(activity: Activity) {
         this.activity = activity
     }
 
-    fun hideKeyBoard(){
-        (activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).
-                toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, InputMethodManager.HIDE_NOT_ALWAYS)
-    }
+    fun hideKeyBoard() = activity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-    fun showKeyBoard(){
-        (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
-                toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.RESULT_UNCHANGED_SHOWN)
-    }
+
+    fun showKeyBoard() = (activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager).
+            toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.RESULT_UNCHANGED_SHOWN)
+
+
+    fun isActive():Boolean = (activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).isActive
+
 }

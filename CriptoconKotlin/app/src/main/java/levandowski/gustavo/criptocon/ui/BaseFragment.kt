@@ -10,17 +10,20 @@ import android.widget.Toast
 import levandowski.gustavo.criptocon.network.model.Coin
 import levandowski.gustavo.criptocon.util.AppDialogs
 import levandowski.gustavo.criptocon.util.ManageKeyboard
+import levandowski.gustavo.criptocon.util.SearchBottomSheet
 
 open class BaseFragment:Fragment() {
     lateinit var manageKeyboard: ManageKeyboard
     lateinit var coinArrayList:ArrayList<Coin>
     lateinit var appDialogs: AppDialogs
+    lateinit var searchBottomSheet: SearchBottomSheet
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         coinArrayList = ArrayList()
         manageKeyboard = ManageKeyboard(activity)
         appDialogs = AppDialogs(activity)
+        searchBottomSheet = SearchBottomSheet()
         receivingBundle()
     }
 
@@ -34,5 +37,6 @@ open class BaseFragment:Fragment() {
 
     fun Any.toast(context: Context, duration: Int = Toast.LENGTH_SHORT): Toast =
             Toast.makeText(context, this.toString(), duration).apply { show() }
+
 
 }

@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.FailureActivity" />
+        <activity android:name=".ui.BaseActivity" />
     </application>
 
 </manifest>

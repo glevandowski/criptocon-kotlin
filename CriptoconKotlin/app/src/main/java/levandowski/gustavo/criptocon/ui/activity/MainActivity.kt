@@ -2,13 +2,16 @@ package levandowski.gustavo.criptocon.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ProgressBar
+import android.widget.SearchView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import levandowski.gustavo.criptocon.R
@@ -18,6 +21,7 @@ import levandowski.gustavo.criptocon.network.model.parameters.CoinModelParameter
 import levandowski.gustavo.criptocon.util.OpenManageClass
 import levandowski.gustavo.criptocon.ui.BaseActivity
 import levandowski.gustavo.criptocon.ui.fragment.*
+import levandowski.gustavo.criptocon.util.ManageKeyboard
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,7 +36,6 @@ import retrofit2.Response
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setBottomSheet(R.id.bottom_sheet)
         progress = findViewById(R.id.progressBar)
         setSupportActionBar(toolbar)
         this.setupNavigation()
@@ -42,7 +45,8 @@ import retrofit2.Response
 
      fun showSplashScreen(){
          isOpen?.isOpenFragment(isOpen = true)
-         OpenManageClass.openFragment(SplashFragment(),fragmentManager,true)
+         fragment = SplashFragment()
+         OpenManageClass.openFragment(fragment,fragmentManager,true)
      }
 
      fun showFirstFragment(){
@@ -65,6 +69,7 @@ import retrofit2.Response
         } else {
             super.onBackPressed()
         }
+        ManageKeyboard(this).hideKeyBoard()
     }
 
     fun share() = startActivity(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT,
