@@ -1,6 +1,6 @@
 package levandowski.gustavo.criptocon.listeners
 
-import levandowski.gustavo.criptocon.model.Coin
+import levandowski.gustavo.criptocon.network.model.Coin
 
 /**
  * Created by glevandowski on 01/07/18.

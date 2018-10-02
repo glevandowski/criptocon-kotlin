@@ -5,7 +5,7 @@ import android.app.Fragment
 import android.app.FragmentManager
 import android.util.Log
 import levandowski.gustavo.criptocon.R
-import levandowski.gustavo.criptocon.model.Coin
+import levandowski.gustavo.criptocon.network.model.Coin
 
 /**
  * Created by glevandowski on 30/06/18.
